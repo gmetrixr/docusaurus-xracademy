@@ -25,7 +25,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Going to docs on mode. https://docusaurus.io/docs/next/docs-introduction#docs-only-mode
+          // Going to docs only mode. https://docusaurus.io/docs/next/docs-introduction#docs-only-mode
           routeBasePath: '/',
           // Please change this to your repo.
           editUrl: 'https://github.com/gmetrixr/xracademy/edit/main/gmetri-xracademy/',
