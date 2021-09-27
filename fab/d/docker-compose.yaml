@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  docusaurus-xracademy:
+  xracademy:
     image: "gmetrixr/baseimage:node-16-dev-v1"
-    container_name: gmetri_docusaurus-xracademy
+    container_name: gmetri_xracademy
     command: ["tail", "-f", "/dev/null"]
     working_dir: /src
     user: node
@@ -11,6 +11,9 @@ services:
       - "8003:8003" #Format: HOST:CONTAINER
     volumes:
       - .:/src
+      #Allow running host to run git commands:
+      - ~/.ssh:/home/node/.ssh:ro
+      - ~/.gitconfig:/home/node/.gitconfig:ro
     environment:
       - IS_LOCAL=true
       - BUILD_VERSION=localversion

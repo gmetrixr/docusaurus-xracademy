@@ -1,0 +1,29 @@
+# .drone.yml
+kind: pipeline
+type: docker
+name: default
+workspace:
+  path: /src
+trigger:
+  branch: [main]
+  event: [push]
+steps:
+- name: Website
+  image: gmetrixr/baseimage:node-16-dev-v1
+  commands:
+  #Setup git access for git clone to work ($HOME is /home/node)
+    - mkdir -p $HOME/.ssh
+    - echo "Host github.com\n\tHostname ssh.github.com\n\tPort 443" >> $HOME/.ssh/config
+    - ssh-keyscan -t rsa -p 443 ssh.github.com > $HOME/.ssh/known_hosts 2> /dev/null
+    - echo "$GITHUB_PRIVATE_KEY" > $HOME/.ssh/id_rsa
+    - chmod 0600 $HOME/.ssh/id_rsa
+  #Actual deploy related commands
+    - sudo chown -R node .
+    - cd gmetri-help
+    - pnpm install
+    - pnpm deploy
+  environment:
+    USE_SSH: true
+    GIT_USER: $DRONE_COMMIT_AUTHOR
+    GITHUB_PRIVATE_KEY: 
+      from_secret: git_deploy_private_key_xracademy
