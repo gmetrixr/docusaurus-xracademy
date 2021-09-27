@@ -19,7 +19,7 @@ steps:
     - chmod 0600 $HOME/.ssh/id_rsa
   #Actual deploy related commands
     - sudo chown -R node .
-    - cd gmetri-help
+    - cd gmetri-xracademy
     - pnpm install
     - pnpm deploy
   environment:
