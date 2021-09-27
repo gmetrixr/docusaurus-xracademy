@@ -54,8 +54,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           srcDark: 'https://s.vrgmetri.com/gb-web/portal-docs/assets/img/logo-white.png'
         },
         items: [
-          {href: 'https://www.gmetri.com/help', label: 'Help Center', position: 'left'},
-          {href: 'https://www.gmetri.com/docs', label: 'Documentation', position: 'left'},
+          {href: 'https://www.gmetri.com/help/', label: 'Help Center', position: 'left'},
+          {href: 'https://www.gmetri.com/docs/', label: 'Documentation', position: 'left'},
           {
             type: 'doc',
             docId: 'intro',
