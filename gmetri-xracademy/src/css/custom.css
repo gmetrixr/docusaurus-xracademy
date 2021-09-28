@@ -5,7 +5,7 @@
  */
 
 /* You can override the default Infima variables here. */
-:root {
+/* :root {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
@@ -13,6 +13,18 @@
   --ifm-color-primary-light: rgb(70, 203, 174);
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-code-font-size: 95%;
+} */
+
+/** Got shades of primary color #2e05c7 from here: https://docusaurus.io/docs/next/styling-layout#styling-your-site-with-infima */
+:root {
+  --ifm-color-primary: #2e05c7;
+  --ifm-color-primary-dark: #2905b3;
+  --ifm-color-primary-darker: #2704a9;
+  --ifm-color-primary-darkest: #20048b;
+  --ifm-color-primary-light: #3306db;
+  --ifm-color-primary-lighter: #3506e5;
+  --ifm-color-primary-lightest: #4110f9;
   --ifm-code-font-size: 95%;
 }
 
