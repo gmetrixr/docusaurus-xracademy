@@ -51,6 +51,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         // Optional fields.
         anonymizeIP: true, // Should IPs be anonymized?
       },
+      algolia: {
+        apiKey: '54a65c550f07165aef07aba800bfe18f',
+        indexName: 'gmetri',
+      },
       navbar: {
         title: 'GMetri XR Academy',
         logo: {
