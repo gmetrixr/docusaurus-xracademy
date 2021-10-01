@@ -1,36 +1,18 @@
 ---
-sidebar_position: 1
-slug: /
+title: "XR Academy"
+description: Getting started, Features, Tutorials, Guidelines, FAQs for using GMetri Platform related to creation of XR experiences, Content, Deployment with Oculus GO for your business requirements.
+
+sidebar_label: 'XR Academy' #Name in sidebar
+sidebar_position: 1 # float position is supported
+# hide_title: true # Hides page heading
+id: intro # By default this is the folder/file name without extension
+slug: / # For complete control of path
+#In H1 below, page id gets used if h1 isn't provided
 ---
+import Card from "/src/components/Card"
 
-# Tutorial Intro
+# XR Academy
 
-Let's discover **Docusaurus in less than 5 minutes**.
+<Card heading={"Starter Kit"} link={"."} />
 
-## Getting Started
-
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npx @docusaurus/init@latest init my-website classic
-```
-
-## Start your site
-
-Run the development server:
-
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+<Card heading={"Tutorials"} link={"."} />

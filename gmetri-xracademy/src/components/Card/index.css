@@ -1,0 +1,52 @@
+.tutorial_card {
+  width: 300px;
+  margin-right: 10px;
+  margin-bottom: 12px;
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none !important;
+}
+
+.tutorial_card__wrapper {
+  position: relative;
+  width: 100%;
+  height: 56px;
+  /* margin-bottom: 20px; */
+  padding: 12px;
+  display: flex;
+  align-items: flex-end;
+  /* border: 1px solid #2e05c7; */
+  border: 1px solid #e9e9e9;
+  transition: all 0.2s ease-in-out;
+  /* https://getcssscan.com/css-box-shadow-examples */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.tutorial_card__wrapper:hover {
+  border: 1px solid #2e05c7;
+  text-decoration: none !important;
+}
+
+.tutorial_card__wrapper:hover .tutorial_card__heading {
+  color: #2e05c7;
+}
+
+.tutorial_card__heading {
+  font-family: 'NeutrifPro-Bold', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  transition: all 0.2s ease-in-out;
+}
+
+html[data-theme='dark'] .tutorial_card__heading {
+  color: #fff;
+}
+
+/* Using a lighter shade of blue in dark mode */
+html[data-theme='dark'] .tutorial_card__wrapper:hover {
+  border: 1px solid #4110f9
+}
+
+html[data-theme='dark'] .tutorial_card__wrapper:hover .tutorial_card__heading {
+  color: #4110f9
+}
