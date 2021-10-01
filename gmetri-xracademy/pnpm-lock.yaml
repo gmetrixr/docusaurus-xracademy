@@ -11,6 +11,7 @@ specifiers:
   prism-react-renderer: ^1.2.1
   react: ^17.0.1
   react-dom: ^17.0.1
+  start: ^5.1.0
   url-loader: ^4.1.1
 
 dependencies:
@@ -24,6 +25,7 @@ dependencies:
   prism-react-renderer: 1.2.1_react@17.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  start: 5.1.0
   url-loader: 4.1.1_file-loader@6.2.0
 
 packages:
@@ -8259,6 +8261,12 @@ packages:
 
   /stable/0.1.8:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
+    dev: false
+
+  /start/5.1.0:
+    resolution: {integrity: sha1-HBcfDvlIf1bQq5p1Ws6GAWkgh2M=}
+    engines: {node: '>=4'}
+    deprecated: Deprecated in favor of https://github.com/deepsweet/start
     dev: false
 
   /state-toggle/1.0.3:
