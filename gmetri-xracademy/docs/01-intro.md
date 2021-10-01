@@ -13,6 +13,6 @@ import Card from "/src/components/Card"
 
 # XR Academy
 
-<Card heading={"Starter Kit"} link={"."} />
+<Card heading={"Starter Kits"} link={"./starter-kits/intro"} />
 
-<Card heading={"Tutorials"} link={"."} />
+<Card heading={"Tutorials"} link={"./tutorials/intro"} />
