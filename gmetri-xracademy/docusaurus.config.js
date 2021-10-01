@@ -54,6 +54,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       algolia: {
         apiKey: '54a65c550f07165aef07aba800bfe18f',
         indexName: 'gmetri',
+        contextualSearch: false,
       },
       navbar: {
         title: 'GMetri XR Academy',
