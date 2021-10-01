@@ -52,20 +52,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         anonymizeIP: true, // Should IPs be anonymized?
       },
       algolia: {
+        //Check this: https://github.com/gmetrixr/help/blob/main/README-searchfix.md
         apiKey: '54a65c550f07165aef07aba800bfe18f',
         indexName: 'gmetri',
-        contextualSearch: false,
-        debug: true,
-        transformItems: function (hits) {
-          console.log('In transform');
-          console.log(hits);
-          return hits;
-        },
-        transformData: function (hits) {
-          console.log('In transform');
-          console.log(hits);
-          return hits;
-        },
       },
       navbar: {
         title: 'GMetri XR Academy',
