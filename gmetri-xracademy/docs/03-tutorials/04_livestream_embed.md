@@ -26,7 +26,7 @@ Live Stream must first be enabled on your YouTube account in order for you to st
     - Copy the provided HTML code        
     ![](https://r.vrgmetri.com/image/q_90/gb-web/portal-docs/assets/img/screenshots/embed_youtube_copy.png.jpg#boxShadow)
 
-2. In the experience editor, add an [EmbedHtml](../../../Features/Create/Elements/EmbedHtml/) element. In the space provided, add the embed code copied from youtube. 
+2. In the experience editor, add an EmbedHtml element. In the space provided, add the embed code copied from youtube. 
 
     a. To stream **without** the Live Chat feature
       

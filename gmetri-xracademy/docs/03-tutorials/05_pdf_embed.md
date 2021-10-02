@@ -10,7 +10,7 @@ sidebar_position: 5
 
 ## Description
 
-This tutorial will go about the steps on how to add a PDF to a GMetri [experience](../../../Features/Create/experiences/).
+This tutorial will teach you how to add a PDF to a GMetri experience.
 
 ## Adding a PDF to a GMetri experience.
 
