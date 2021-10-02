@@ -2,25 +2,28 @@
 title: How to embed a livestream video - GMetri XR Platform
 description: Made using the GMetri XR platform, this app demonstrates the compatibility of the GMetri platform with external services like chatbot.
 hide_title: true
-sidebar_label: Live Stream Embedding
+sidebar_label: Enabling Live Stream
+sidebar_position: 4
 ---
 
 # Embed a Live Stream Video
-  ![](https://r.vrgmetri.com/image/q_90/gb-web/portal-docs/assets/img/screenshots/embed_live_stream.png.jpg#boxShadow)
 
-## Description
+GMetri supports adding YouTube live stream video as embeds. 
 
-GMetri platform supports adding youtube live stream video as embeds. Zoom meetings/webinars can also be added as embeds when streamed via youtube live (more info on this below).
+:::info
+Zoom meetings/webinars can also be added as embeds when streamed via YouTube Live (more info on this below).
+:::
 
-## Youtube Live Stream
+![](https://r.vrgmetri.com/image/q_90/gb-web/portal-docs/assets/img/screenshots/embed_live_stream.png.jpg#boxShadow)
 
-Live Stream must first be enabled on your Youtube account in order for you to start a Live video. For more information on this, please see [Youtube help](https://support.google.com/youtube/answer/2474026).
+## YouTube Live Stream
+
+Live Stream must first be enabled on your YouTube account in order for you to start a Live video. For more information on this, please check [YouTube help](https://support.google.com/youtube/answer/2474026).
 
 1. After you start your live video, obtain the embed code from the video:
     - Click on "Share"
     - Click on the "Embed" option
-    - Copy the provided HTML code
-    
+    - Copy the provided HTML code        
     ![](https://r.vrgmetri.com/image/q_90/gb-web/portal-docs/assets/img/screenshots/embed_youtube_copy.png.jpg#boxShadow)
 
 2. In the experience editor, add an [EmbedHtml](../../../Features/Create/Elements/EmbedHtml/) element. In the space provided, add the embed code copied from youtube. 
@@ -66,7 +69,7 @@ Live Stream must first be enabled on your Youtube account in order for you to st
 
     These modes open the live stream as an overlay on top the rest of the experience.
 
-4. Let's add a rule to show the EmbedHTML element setup above when clicked on any button.
+4. Also add a rule to show the EmbedHTML element setup above when clicked on any button.
 
     ![](https://r.vrgmetri.com/image/q_90/gb-web/portal-docs/assets/img/screenshots/embed_youtube_rule.png.jpg#boxShadow)
 

@@ -2,7 +2,6 @@
 title: "Rules - Is In List"
 sidebar_label: 'Is In List' #Name in sidebar
 sidebar_position: 1 # float position is supported
-tags: rules
 ---
 
 # Rules - Is In List

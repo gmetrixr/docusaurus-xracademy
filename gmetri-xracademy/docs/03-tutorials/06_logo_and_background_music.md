@@ -2,7 +2,8 @@
 title: How to add persistent music and logo to your experience - GMetri XR Platform
 description: Made using the GMetri XR platform, this app demonstrates the ability of GMetir platform to be able to add experience wide logo and music using custom script.
 hide_title: true
-sidebar_label: Logo and Music w/custom script
+sidebar_label: Add Logo & Background Music
+sidebar_position: 6
 ---
 
 # Add a persistent logo and music to an experience

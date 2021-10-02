@@ -2,7 +2,8 @@
 title: How to upload and view a PDF in a GMetri experience
 description: Made using the GMetri XR platform, this app demonstrates the compatibility of the GMetri platform with external services like chatbot.
 hide_title: true
-sidebar_label: PDF in a GMetri Experience
+sidebar_label: Embedding PDF Document
+sidebar_position: 5
 ---
 
 # How to add a PDF to a GMetri experience.
