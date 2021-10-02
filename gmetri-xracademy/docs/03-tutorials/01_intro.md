@@ -6,7 +6,7 @@ import Card from "/src/components/Card"
 
 # Tutorials
 
-<Card heading={"Rules"} link={"./rules/is-in-list"}/>
+<Card heading={"Rules"} link={"./rules/rules-is-in-list"}/>
 <Card heading={"Elements"} link={"./elements/adding-elements"}/>
 <Card heading={"Embedding Live Stream"} link={"./livestream_embed"}/>
 <Card heading={"Embedding PDF"} link={"./pdf_embed"}/>
