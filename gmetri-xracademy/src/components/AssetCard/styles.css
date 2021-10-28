@@ -1,0 +1,34 @@
+.asset_card_base {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e9e9e9;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 10px;
+  width: 210px;
+  margin: 0 5px 5px 0;
+}
+
+.asset_card_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.asset_card_heading {
+  color: #1A222E;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.asset_card_meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.asset_card_icon {
+  cursor: pointer;
+}
