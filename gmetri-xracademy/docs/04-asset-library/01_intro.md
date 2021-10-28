@@ -16,3 +16,4 @@ Browse through the plethora of two dimensional and three dimensional assets like
 <Card heading={"Panoramic Images"} link={"./pano_images"}/>
 <Card heading={"Panoramic Videos"} link={"./pano_videos"}/>
 <Card heading={"Audios"} link={"./audios"}/>
+<Card heading={"3D Models"} link={"./models"}/>
