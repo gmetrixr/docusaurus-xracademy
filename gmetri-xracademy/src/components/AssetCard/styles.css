@@ -6,6 +6,7 @@
   padding: 10px;
   width: 210px;
   margin: 0 5px 5px 0;
+  cursor: pointer;
 }
 
 .asset_card_image {
