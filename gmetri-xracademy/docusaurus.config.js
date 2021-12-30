@@ -42,6 +42,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         },
       }),
     ],
+    ["redocusaurus",
+      {
+        specs: [
+          {
+            spec: './static/openapi.json',
+          },
+        ],
+      }
+    ]
   ],
 
   themeConfig:

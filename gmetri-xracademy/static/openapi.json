@@ -1,0 +1,389 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Z5API OpenApi",
+    "description": "Z5 API OpenApi Spec",
+    "version": "0.1.0"
+  },
+  "components": {
+    "securitySchemes": {
+      "httpAuth": { "type": "http", "scheme": "token" }
+    }
+  },
+  "tags": [{ "name": "openplayer", "description": "Open Player end-points" }],
+  "externalDocs": {
+    "url": "https://docs.gmetri.com",
+    "description": "Find more info here"
+  },
+  "servers": [{ "url": "http://localhost:3646/" }],
+  "paths": {
+    "/openplayer/experience/create": {
+      "post": {
+        "responses": { "200": { "description": "Default Response" } },
+        "tags": ["experience"],
+        "security": [{ "httpAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "orgSlug": {
+                    "type": "string",
+                    "description": "Organization slug"
+                  },
+                  "engine": { "type": "string" },
+                  "name": { "type": "string" },
+                  "json": { "type": "object" },
+                  "tags": { "type": "array", "items": { "type": "string" } },
+                  "description": { "type": "string" }
+                },
+                "required": ["orgSlug", "engine", "name"]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "orgSlug": { "type": "string" },
+                  "engine": { "type": "string" },
+                  "name": { "type": "string" },
+                  "json": { "type": "object" },
+                  "tags": { "type": "array", "items": { "type": "string" } },
+                  "description": { "type": "string" }
+                },
+                "required": ["orgSlug", "engine", "name"]
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/openplayer/experience/get": {
+      "post": {
+        "responses": { "200": { "description": "Default Response" } },
+        "tags": ["experience"],
+        "security": [{ "httpAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": { "projUuid": { "type": "string" } },
+                "required": ["projUuid"]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": { "projUuid": { "type": "string" } },
+                "required": ["projUuid"]
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/openplayer/experience/getProjectJson": {
+      "post": {
+        "responses": { "200": { "description": "Default Response" } },
+        "tags": ["experience"],
+        "security": [{ "httpAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": { "projUuid": { "type": "string" } },
+                "required": ["projUuid"]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": { "projUuid": { "type": "string" } },
+                "required": ["projUuid"]
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/openplayer/experience/updateJson": {
+      "post": {
+        "responses": { "200": { "description": "Default Response" } },
+        "tags": ["experience"],
+        "security": [{ "httpAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "projUuid": { "type": "string" },
+                  "json": { "type": "object" }
+                },
+                "required": ["projUuid", "json"]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "projUuid": { "type": "string" },
+                  "json": { "type": "object" }
+                },
+                "required": ["projUuid", "json"]
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/openplayer/experience/applyPatches": {
+      "post": {
+        "responses": { "200": { "description": "Default Response" } },
+        "tags": ["experience"],
+        "security": [{ "httpAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "projUuid": { "type": "string" },
+                  "json": { "type": "object" }
+                },
+                "required": ["projUuid", "json"]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "projUuid": { "type": "string" },
+                  "json": { "type": "object" }
+                },
+                "required": ["projUuid", "json"]
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/openplayer/experience/delete": {
+      "post": {
+        "responses": { "200": { "description": "Default Response" } },
+        "tags": ["experience"],
+        "security": [{ "httpAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "projUuid": { "type": "string" },
+                  "json": { "type": "object" }
+                },
+                "required": ["projUuid", "json"]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "projUuid": { "type": "string" },
+                  "json": { "type": "object" }
+                },
+                "required": ["projUuid", "json"]
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/openplayer/deployment/create": {
+      "post": {
+        "responses": { "200": { "description": "Default Response" } },
+        "tags": ["deployment"],
+        "security": [{ "httpAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "orgSlug": { "type": "string" },
+                  "projUuid": { "type": "string" },
+                  "deploymentSlug": { "type": "string" }
+                },
+                "required": ["orgSlug", "projUuid"]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "orgSlug": { "type": "string" },
+                  "projUuid": { "type": "string" },
+                  "deploymentSlug": { "type": "string" }
+                },
+                "required": ["orgSlug", "projUuid"]
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/openplayer/deployment/update": {
+      "post": {
+        "responses": { "200": { "description": "Default Response" } },
+        "tags": ["deployment"],
+        "security": [{ "httpAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "deploymentId": { "type": "number" },
+                  "orgSlug": { "type": "string" },
+                  "projUuid": { "type": "string" },
+                  "slug": { "type": "string" },
+                  "guestView": { "type": "boolean" },
+                  "settings": {
+                    "type": "object",
+                    "properties": {
+                      "track_location": { "type": "boolean" },
+                      "enable_discussion": { "type": "boolean" },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "title": { "type": "string" },
+                          "thumbnail": { "type": "string" },
+                          "description": { "type": "string" },
+                          "tags": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                          }
+                        }
+                      },
+                      "geolock": {
+                        "type": "object",
+                        "properties": {
+                          "range": { "type": "number" },
+                          "lat": { "type": "number" },
+                          "lng": { "type": "number" },
+                          "address": { "type": "string" },
+                          "enabled": { "type": "boolean" }
+                        }
+                      }
+                    }
+                  },
+                  "viewerGroupId": { "type": "number" }
+                },
+                "required": ["deploymentId", "orgSlug", "projUuid"]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "deploymentId": { "type": "number" },
+                  "orgSlug": { "type": "string" },
+                  "projUuid": { "type": "string" },
+                  "slug": { "type": "string" },
+                  "guestView": { "type": "boolean" },
+                  "settings": {
+                    "type": "object",
+                    "properties": {
+                      "track_location": { "type": "boolean" },
+                      "enable_discussion": { "type": "boolean" },
+                      "meta": {
+                        "type": "object",
+                        "properties": {
+                          "title": { "type": "string" },
+                          "thumbnail": { "type": "string" },
+                          "description": { "type": "string" },
+                          "tags": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                          }
+                        }
+                      },
+                      "geolock": {
+                        "type": "object",
+                        "properties": {
+                          "range": { "type": "number" },
+                          "lat": { "type": "number" },
+                          "lng": { "type": "number" },
+                          "address": { "type": "string" },
+                          "enabled": { "type": "boolean" }
+                        }
+                      }
+                    }
+                  },
+                  "viewerGroupId": { "type": "number" }
+                },
+                "required": ["deploymentId", "orgSlug", "projUuid"]
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/openplayer/deployment/delete": {
+      "post": {
+        "responses": { "200": { "description": "Default Response" } },
+        "tags": ["deployment"],
+        "security": [{ "httpAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projUuid": { "type": "string" },
+                  "deploymentId": { "type": "number" }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projUuid": { "type": "string" },
+                  "deploymentId": { "type": "number" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
