@@ -19,9 +19,138 @@
   "paths": {
     "/openplayer/experience/create": {
       "post": {
-        "responses": { "200": { "description": "Default Response" } },
-        "tags": ["experience"],
-        "security": [{ "httpAuth": [] }],
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "errorMessage": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "The object of deployment",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "json": {
+                          "type": "object",
+                          "description": "Project json[RT.project]."
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "nullable": true,
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "uuid": {
+                          "type": "string"
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "engine": {
+                          "type": "string"
+                        },
+                        "thumbnail": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "modified_at": {
+                          "type": "string"
+                        },
+                        "organization_id": {
+                          "type": "number"
+                        },
+                        "modified_by_user_id": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "experience"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -31,15 +160,36 @@
                 "properties": {
                   "orgSlug": {
                     "type": "string",
-                    "description": "Organization slug"
+                    "description": "Slug of the organization."
                   },
-                  "engine": { "type": "string" },
-                  "name": { "type": "string" },
-                  "json": { "type": "object" },
-                  "tags": { "type": "array", "items": { "type": "string" } },
-                  "description": { "type": "string" }
+                  "engine": {
+                    "type": "string",
+                    "description": "Engine of the project. Valid values are v4 and v5."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the project."
+                  },
+                  "json": {
+                    "type": "object",
+                    "description": "Project json.[RT.project]"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the project."
+                  }
                 },
-                "required": ["orgSlug", "engine", "name"]
+                "required": [
+                  "orgSlug",
+                  "engine",
+                  "name"
+                ]
               }
             },
             "multipart/form-data": {
@@ -47,14 +197,38 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "orgSlug": { "type": "string" },
-                  "engine": { "type": "string" },
-                  "name": { "type": "string" },
-                  "json": { "type": "object" },
-                  "tags": { "type": "array", "items": { "type": "string" } },
-                  "description": { "type": "string" }
+                  "orgSlug": {
+                    "type": "string",
+                    "description": "Slug of the organization."
+                  },
+                  "engine": {
+                    "type": "string",
+                    "description": "Engine of the project. Valid values are v4 and v5."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the project."
+                  },
+                  "json": {
+                    "type": "object",
+                    "description": "Project json.[RT.project]"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the project."
+                  }
                 },
-                "required": ["orgSlug", "engine", "name"]
+                "required": [
+                  "orgSlug",
+                  "engine",
+                  "name"
+                ]
               }
             }
           },
@@ -64,25 +238,309 @@
     },
     "/openplayer/experience/get": {
       "post": {
-        "responses": { "200": { "description": "Default Response" } },
-        "tags": ["experience"],
-        "security": [{ "httpAuth": [] }],
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "The object of deployment",
+                      "properties": {
+                        "project": {
+                          "type": "object",
+                          "description": "Project object.",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "json": {
+                              "type": "object",
+                              "description": "Project json[RT.project]."
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "tags": {
+                              "type": "array",
+                              "nullable": true,
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "uuid": {
+                              "type": "string"
+                            },
+                            "active": {
+                              "type": "boolean"
+                            },
+                            "engine": {
+                              "type": "string"
+                            },
+                            "thumbnail": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "modified_at": {
+                              "type": "string"
+                            },
+                            "organization_id": {
+                              "type": "number"
+                            },
+                            "modified_by_user_id": {
+                              "type": "number"
+                            }
+                          }
+                        },
+                        "projectJson": {
+                          "type": "object",
+                          "description": "Project json object[RT.project]."
+                        },
+                        "org": {
+                          "type": "object",
+                          "description": "Organization object.",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "logo": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "slug": {
+                              "type": "string"
+                            },
+                            "domain": {
+                              "type": "string"
+                            },
+                            "settings": {
+                              "type": "object",
+                              "description": "Settings of the organization.",
+                              "properties": {
+                                "outgoing_webhook_viewer_state": {
+                                  "type": "object",
+                                  "properties": {
+                                    "enabled": {
+                                      "type": "boolean"
+                                    },
+                                    "jwt_secret": {
+                                      "type": "string",
+                                      "nullable": true
+                                    },
+                                    "external_endpoint": {
+                                      "type": "string",
+                                      "nullable": true
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "presigned": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "api_secret": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "logo_color": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "org_bucket": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "view_cname": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "customer_id": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "global_vars": {
+                              "type": "object",
+                              "nullable": true,
+                              "description": "Global variables of organization."
+                            },
+                            "modified_at": {
+                              "type": "string"
+                            },
+                            "website_url": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "login_method": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "token_secret": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "referral_code": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "paddle_cancel_url": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "paddle_update_url": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "subscription_name": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "trial_expiry_date": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "override_login_url": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "external_api_endpoint": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "paddle_subscription_id": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "enable_viewer_state_forwarding": {
+                              "type": "boolean"
+                            },
+                            "subscription_management_status": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "experience"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "additionalProperties": false,
-                "properties": { "projUuid": { "type": "string" } },
-                "required": ["projUuid"]
+                "properties": {
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  }
+                },
+                "required": [
+                  "projUuid"
+                ]
               }
             },
             "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "additionalProperties": false,
-                "properties": { "projUuid": { "type": "string" } },
-                "required": ["projUuid"]
+                "properties": {
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  }
+                },
+                "required": [
+                  "projUuid"
+                ]
               }
             }
           },
@@ -92,25 +550,122 @@
     },
     "/openplayer/experience/getProjectJson": {
       "post": {
-        "responses": { "200": { "description": "Default Response" } },
-        "tags": ["experience"],
-        "security": [{ "httpAuth": [] }],
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "Project json object[RT.project]."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "experience"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "additionalProperties": false,
-                "properties": { "projUuid": { "type": "string" } },
-                "required": ["projUuid"]
+                "properties": {
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  }
+                },
+                "required": [
+                  "projUuid"
+                ]
               }
             },
             "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "additionalProperties": false,
-                "properties": { "projUuid": { "type": "string" } },
-                "required": ["projUuid"]
+                "properties": {
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  }
+                },
+                "required": [
+                  "projUuid"
+                ]
               }
             }
           },
@@ -120,9 +675,88 @@
     },
     "/openplayer/experience/updateJson": {
       "post": {
-        "responses": { "200": { "description": "Default Response" } },
-        "tags": ["experience"],
-        "security": [{ "httpAuth": [] }],
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "experience"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -130,10 +764,19 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "projUuid": { "type": "string" },
-                  "json": { "type": "object" }
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "json": {
+                    "type": "object",
+                    "description": "Json object of project[RT.project]."
+                  }
                 },
-                "required": ["projUuid", "json"]
+                "required": [
+                  "projUuid",
+                  "json"
+                ]
               }
             },
             "multipart/form-data": {
@@ -141,10 +784,19 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "projUuid": { "type": "string" },
-                  "json": { "type": "object" }
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "json": {
+                    "type": "object",
+                    "description": "Json object of project[RT.project]."
+                  }
                 },
-                "required": ["projUuid", "json"]
+                "required": [
+                  "projUuid",
+                  "json"
+                ]
               }
             }
           },
@@ -154,9 +806,88 @@
     },
     "/openplayer/experience/applyPatches": {
       "post": {
-        "responses": { "200": { "description": "Default Response" } },
-        "tags": ["experience"],
-        "security": [{ "httpAuth": [] }],
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "experience"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -164,10 +895,22 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "projUuid": { "type": "string" },
-                  "json": { "type": "object" }
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "patches": {
+                    "type": "array",
+                    "description": "https://immerjs.github.io/immer/patches/",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
                 },
-                "required": ["projUuid", "json"]
+                "required": [
+                  "projUuid",
+                  "patches"
+                ]
               }
             },
             "multipart/form-data": {
@@ -175,10 +918,22 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "projUuid": { "type": "string" },
-                  "json": { "type": "object" }
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "patches": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "https://immerjs.github.io/immer/patches/"
+                    }
+                  }
                 },
-                "required": ["projUuid", "json"]
+                "required": [
+                  "projUuid",
+                  "patches"
+                ]
               }
             }
           },
@@ -188,9 +943,88 @@
     },
     "/openplayer/experience/delete": {
       "post": {
-        "responses": { "200": { "description": "Default Response" } },
-        "tags": ["experience"],
-        "security": [{ "httpAuth": [] }],
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "experience"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -198,10 +1032,14 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "projUuid": { "type": "string" },
-                  "json": { "type": "object" }
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  }
                 },
-                "required": ["projUuid", "json"]
+                "required": [
+                  "projUuid"
+                ]
               }
             },
             "multipart/form-data": {
@@ -209,10 +1047,14 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "projUuid": { "type": "string" },
-                  "json": { "type": "object" }
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  }
                 },
-                "required": ["projUuid", "json"]
+                "required": [
+                  "projUuid"
+                ]
               }
             }
           },
@@ -222,9 +1064,178 @@
     },
     "/openplayer/deployment/create": {
       "post": {
-        "responses": { "200": { "description": "Default Response" } },
-        "tags": ["deployment"],
-        "security": [{ "httpAuth": [] }],
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "errorMessage": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "The object of deployment",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "live": {
+                          "type": "boolean"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "guest_view": {
+                          "type": "boolean"
+                        },
+                        "project_id": {
+                          "type": "number"
+                        },
+                        "modified_at": {
+                          "type": "string"
+                        },
+                        "organization_id": {
+                          "type": "number"
+                        },
+                        "viewer_group_id": {
+                          "type": "number"
+                        },
+                        "discussion": {
+                          "type": "object",
+                          "nullable": true
+                        },
+                        "settings": {
+                          "type": "object",
+                          "nullable": true,
+                          "properties": {
+                            "track_location": {
+                              "type": "boolean"
+                            },
+                            "enable_discussion": {
+                              "type": "boolean"
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string"
+                                },
+                                "thumbnail": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "type": "string"
+                                },
+                                "tags": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "geolock": {
+                              "type": "object",
+                              "properties": {
+                                "range": {
+                                  "type": "number"
+                                },
+                                "lat": {
+                                  "type": "number"
+                                },
+                                "lng": {
+                                  "type": "number"
+                                },
+                                "address": {
+                                  "type": "string"
+                                },
+                                "enabled": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "deployment"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -232,11 +1243,23 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "orgSlug": { "type": "string" },
-                  "projUuid": { "type": "string" },
-                  "deploymentSlug": { "type": "string" }
+                  "orgSlug": {
+                    "type": "string",
+                    "description": "Slug of the organization"
+                  },
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "deploymentSlug": {
+                    "type": "string",
+                    "description": "Slug of the deployment"
+                  }
                 },
-                "required": ["orgSlug", "projUuid"]
+                "required": [
+                  "orgSlug",
+                  "projUuid"
+                ]
               }
             },
             "multipart/form-data": {
@@ -244,11 +1267,23 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "orgSlug": { "type": "string" },
-                  "projUuid": { "type": "string" },
-                  "deploymentSlug": { "type": "string" }
+                  "orgSlug": {
+                    "type": "string",
+                    "description": "Slug of the organization"
+                  },
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "deploymentSlug": {
+                    "type": "string",
+                    "description": "Slug of the deployment"
+                  }
                 },
-                "required": ["orgSlug", "projUuid"]
+                "required": [
+                  "orgSlug",
+                  "projUuid"
+                ]
               }
             }
           },
@@ -258,9 +1293,85 @@
     },
     "/openplayer/deployment/update": {
       "post": {
-        "responses": { "200": { "description": "Default Response" } },
-        "tags": ["deployment"],
-        "security": [{ "httpAuth": [] }],
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "depSlug": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number",
+                      "nullable": true
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "deployment"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -268,43 +1379,91 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "deploymentId": { "type": "number" },
-                  "orgSlug": { "type": "string" },
-                  "projUuid": { "type": "string" },
-                  "slug": { "type": "string" },
-                  "guestView": { "type": "boolean" },
+                  "deploymentId": {
+                    "type": "number"
+                  },
+                  "orgSlug": {
+                    "type": "string",
+                    "description": "Slug of the organization"
+                  },
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "slug": {
+                    "type": "string",
+                    "description": "Slug of the deployment."
+                  },
+                  "guestView": {
+                    "type": "boolean"
+                  },
                   "settings": {
                     "type": "object",
                     "properties": {
-                      "track_location": { "type": "boolean" },
-                      "enable_discussion": { "type": "boolean" },
+                      "track_location": {
+                        "type": "boolean",
+                        "description": "Boolean configuration to track the location."
+                      },
+                      "enable_discussion": {
+                        "type": "boolean",
+                        "description": "True will enable the discussion viewer."
+                      },
                       "meta": {
                         "type": "object",
                         "properties": {
-                          "title": { "type": "string" },
-                          "thumbnail": { "type": "string" },
-                          "description": { "type": "string" },
+                          "title": {
+                            "type": "string"
+                          },
+                          "thumbnail": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
                           "tags": {
                             "type": "array",
-                            "items": { "type": "string" }
+                            "items": {
+                              "type": "string"
+                            }
                           }
                         }
                       },
                       "geolock": {
                         "type": "object",
                         "properties": {
-                          "range": { "type": "number" },
-                          "lat": { "type": "number" },
-                          "lng": { "type": "number" },
-                          "address": { "type": "string" },
-                          "enabled": { "type": "boolean" }
+                          "range": {
+                            "type": "number"
+                          },
+                          "lat": {
+                            "type": "number",
+                            "description": "Latitude of the geo location."
+                          },
+                          "lng": {
+                            "type": "number",
+                            "description": "Longitude of the geo location."
+                          },
+                          "address": {
+                            "type": "string",
+                            "description": "Address of the geo location."
+                          },
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Boolean configuration value to enable and disable the geolock setting."
+                          }
                         }
                       }
                     }
                   },
-                  "viewerGroupId": { "type": "number" }
+                  "viewerGroupId": {
+                    "type": "number",
+                    "description": "Unique identifier of the viewer group."
+                  }
                 },
-                "required": ["deploymentId", "orgSlug", "projUuid"]
+                "required": [
+                  "deploymentId",
+                  "orgSlug",
+                  "projUuid"
+                ]
               }
             },
             "multipart/form-data": {
@@ -312,43 +1471,91 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "deploymentId": { "type": "number" },
-                  "orgSlug": { "type": "string" },
-                  "projUuid": { "type": "string" },
-                  "slug": { "type": "string" },
-                  "guestView": { "type": "boolean" },
+                  "deploymentId": {
+                    "type": "number"
+                  },
+                  "orgSlug": {
+                    "type": "string",
+                    "description": "Slug of the organization"
+                  },
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "slug": {
+                    "type": "string",
+                    "description": "Slug of the deployment."
+                  },
+                  "guestView": {
+                    "type": "boolean"
+                  },
                   "settings": {
                     "type": "object",
                     "properties": {
-                      "track_location": { "type": "boolean" },
-                      "enable_discussion": { "type": "boolean" },
+                      "track_location": {
+                        "type": "boolean",
+                        "description": "Boolean configuration to track the location."
+                      },
+                      "enable_discussion": {
+                        "type": "boolean",
+                        "description": "True will enable the discussion viewer."
+                      },
                       "meta": {
                         "type": "object",
                         "properties": {
-                          "title": { "type": "string" },
-                          "thumbnail": { "type": "string" },
-                          "description": { "type": "string" },
+                          "title": {
+                            "type": "string"
+                          },
+                          "thumbnail": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
                           "tags": {
                             "type": "array",
-                            "items": { "type": "string" }
+                            "items": {
+                              "type": "string"
+                            }
                           }
                         }
                       },
                       "geolock": {
                         "type": "object",
                         "properties": {
-                          "range": { "type": "number" },
-                          "lat": { "type": "number" },
-                          "lng": { "type": "number" },
-                          "address": { "type": "string" },
-                          "enabled": { "type": "boolean" }
+                          "range": {
+                            "type": "number"
+                          },
+                          "lat": {
+                            "type": "number",
+                            "description": "Latitude of the geo location."
+                          },
+                          "lng": {
+                            "type": "number",
+                            "description": "Longitude of the geo location."
+                          },
+                          "address": {
+                            "type": "string",
+                            "description": "Address of the geo location."
+                          },
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Boolean configuration value to enable and disable the geolock setting."
+                          }
                         }
                       }
                     }
                   },
-                  "viewerGroupId": { "type": "number" }
+                  "viewerGroupId": {
+                    "type": "number",
+                    "description": "Unique identifier of the viewer group."
+                  }
                 },
-                "required": ["deploymentId", "orgSlug", "projUuid"]
+                "required": [
+                  "deploymentId",
+                  "orgSlug",
+                  "projUuid"
+                ]
               }
             }
           },
@@ -358,17 +1565,99 @@
     },
     "/openplayer/deployment/delete": {
       "post": {
-        "responses": { "200": { "description": "Default Response" } },
-        "tags": ["deployment"],
-        "security": [{ "httpAuth": [] }],
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "depSlug": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number",
+                      "nullable": true
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "nullable": true,
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "deployment"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "projUuid": { "type": "string" },
-                  "deploymentId": { "type": "number" }
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "deploymentId": {
+                    "type": "number",
+                    "description": "Unique identifier of the deployment.(Number auto-increament key)."
+                  }
                 }
               }
             },
@@ -376,8 +1665,14 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "projUuid": { "type": "string" },
-                  "deploymentId": { "type": "number" }
+                  "projUuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the project(UUID format)."
+                  },
+                  "deploymentId": {
+                    "type": "number",
+                    "description": "Unique identifier of the deployment.(Number auto-increament key)."
+                  }
                 }
               }
             }
