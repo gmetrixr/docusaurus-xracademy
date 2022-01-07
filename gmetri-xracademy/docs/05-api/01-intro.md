@@ -5,7 +5,7 @@ hide_table_of_contents: true
 ---
 import ApiDoc from "/src/components/ApiDoc"
 
-# Open API Reference
+# API Reference
 
 Complete reference documentation for the Open Player API. Includes code snippets and examples.
 
