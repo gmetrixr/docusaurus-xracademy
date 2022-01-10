@@ -1,0 +1,1573 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SMSAPI OpenApi",
+    "description": "SMS API OpenApi Spec",
+    "version": "0.1.0"
+  },
+  "components": {
+    "securitySchemes": {
+      "httpAuth": { "type": "http", "scheme": "token" }
+    }
+  },
+  "externalDocs": {
+    "url": "https://docs.gmetri.com",
+    "description": "Find more info here"
+  },
+  "servers": [{ "url": "https://smsapi.in.gmetri.com/" }],
+  "paths": {
+    "/plugin/presignUpload": {
+      "post": {
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "errorMessage": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "The object of presigned urls.",
+                      "properties": {
+                        "presignedUrls": {
+                          "type": "object",
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            },
+                            "t": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "method": {
+                          "type": "string"
+                        },
+                        "uuid": {
+                          "type": "string"
+                        },
+                        "filePaths": {
+                          "type": "object",
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "File Manager"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "parentId",
+                  "name"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "folderId": {
+                    "type": "number",
+                    "description": "Unique identifier of folder object[auto-increament key]."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the file object."
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "parentId",
+                  "name"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "folderId": {
+                    "type": "number",
+                    "description": "Unique identifier of folder object[auto-increament key]."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the file object."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/plugin/createFile": {
+      "post": {
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "errorMessage": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "The object of file.",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "parent_id": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "bucket_id": {
+                          "type": "number"
+                        },
+                        "is_folder": {
+                          "type": "boolean"
+                        },
+                        "ext": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "processing": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "processing_count": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "processing_timestamp": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "file_paths": {
+                          "type": "object",
+                          "description": "The paths of file.",
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            },
+                            "t": {
+                              "type": "string"
+                            },
+                            "r": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          }
+                        },
+                        "uuid": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "size": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "type": "string"
+                        },
+                        "mime_type": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "num_files": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "label": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "description": "The metadata of file.",
+                          "nullable": true,
+                          "properties": {
+                            "ext": {
+                              "type": "string"
+                            },
+                            "mimeType": {
+                              "type": "string"
+                            },
+                            "resolution": {
+                              "type": "object",
+                              "description": "The resolution of file",
+                              "nullable": true,
+                              "properties": {
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "file_urls": {
+                          "type": "object",
+                          "description": "The urls of sile.",
+                          "nullable": true,
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            },
+                            "t": {
+                              "type": "string"
+                            },
+                            "r": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "File Manager"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "folderId",
+                  "uploadMeta"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "folderId": {
+                    "type": "number",
+                    "description": "Unique identifier of folder object[auto-increament key]."
+                  },
+                  "uploadMeta": {
+                    "type": "object",
+                    "description": "Metdadata of the file object.",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "file_paths": {
+                        "type": "object",
+                        "description": "The paths of file.",
+                        "properties": {
+                          "o": {
+                            "type": "string"
+                          },
+                          "t": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "r": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "uuid": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "relativePath": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "folderId",
+                  "uploadMeta"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "folderId": {
+                    "type": "number",
+                    "description": "Unique identifier of folder object[auto-increament key]."
+                  },
+                  "uploadMeta": {
+                    "type": "object",
+                    "description": "Metdadata of the file object.",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "file_paths": {
+                        "type": "object",
+                        "description": "The paths of file.",
+                        "properties": {
+                          "o": {
+                            "type": "string"
+                          },
+                          "t": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "r": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "uuid": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "relativePath": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/plugin/listFolder": {
+      "post": {
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "errorMessage": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "The array of file object.",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "parent_id": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "bucket_id": {
+                          "type": "number"
+                        },
+                        "is_folder": {
+                          "type": "boolean"
+                        },
+                        "ext": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "processing": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "processing_count": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "processing_timestamp": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "file_paths": {
+                          "type": "object",
+                          "description": "The paths of file.",
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            },
+                            "t": {
+                              "type": "string"
+                            },
+                            "r": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          }
+                        },
+                        "uuid": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "size": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "type": "string"
+                        },
+                        "mime_type": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "num_files": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "label": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "description": "The metadata of file.",
+                          "nullable": true,
+                          "properties": {
+                            "ext": {
+                              "type": "string"
+                            },
+                            "mimeType": {
+                              "type": "string"
+                            },
+                            "resolution": {
+                              "type": "object",
+                              "description": "The resolution of file",
+                              "nullable": true,
+                              "properties": {
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "file_urls": {
+                          "type": "object",
+                          "description": "The urls of sile.",
+                          "nullable": true,
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            },
+                            "t": {
+                              "type": "string"
+                            },
+                            "r": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          }
+                        }
+                      },
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "File Manager"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "folderId"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "folderId": {
+                    "type": "number",
+                    "description": "Unique identifier of folder object[auto-increament key]."
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "folderId"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "folderId": {
+                    "type": "number",
+                    "description": "Unique identifier of folder object[auto-increament key]."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/plugin/getFiles": {
+      "post": {
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "errorMessage": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "description": "The array of file object.",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "parent_id": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "bucket_id": {
+                          "type": "number"
+                        },
+                        "is_folder": {
+                          "type": "boolean"
+                        },
+                        "ext": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "processing": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "processing_count": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "processing_timestamp": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "file_paths": {
+                          "type": "object",
+                          "description": "The paths of file.",
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            },
+                            "t": {
+                              "type": "string"
+                            },
+                            "r": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          }
+                        },
+                        "uuid": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "size": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "type": "string"
+                        },
+                        "mime_type": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "num_files": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "label": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "description": "The metadata of file.",
+                          "nullable": true,
+                          "properties": {
+                            "ext": {
+                              "type": "string"
+                            },
+                            "mimeType": {
+                              "type": "string"
+                            },
+                            "resolution": {
+                              "type": "object",
+                              "description": "The resolution of file",
+                              "nullable": true,
+                              "properties": {
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "file_urls": {
+                          "type": "object",
+                          "description": "The urls of sile.",
+                          "nullable": true,
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            },
+                            "t": {
+                              "type": "string"
+                            },
+                            "r": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          }
+                        }
+                      },
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "File Manager"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "ids"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "description": "Array of unique identifier of file objects[auto-increament key]."
+                    }
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "ids"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "description": "Array of unique identifier of file objects[auto-increament key]."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/plugin/renameFile": {
+      "post": {
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "errorMessage": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "The object of file.",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "parent_id": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "bucket_id": {
+                          "type": "number"
+                        },
+                        "is_folder": {
+                          "type": "boolean"
+                        },
+                        "ext": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "type": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "processing": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "processing_count": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "processing_timestamp": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "file_paths": {
+                          "type": "object",
+                          "description": "The paths of file.",
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            },
+                            "t": {
+                              "type": "string"
+                            },
+                            "r": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          }
+                        },
+                        "uuid": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "size": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "type": "string"
+                        },
+                        "mime_type": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "num_files": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "label": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "description": "The metadata of file.",
+                          "nullable": true,
+                          "properties": {
+                            "ext": {
+                              "type": "string"
+                            },
+                            "mimeType": {
+                              "type": "string"
+                            },
+                            "resolution": {
+                              "type": "object",
+                              "description": "The resolution of file",
+                              "nullable": true,
+                              "properties": {
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "file_urls": {
+                          "type": "object",
+                          "description": "The urls of sile.",
+                          "nullable": true,
+                          "properties": {
+                            "o": {
+                              "type": "string"
+                            },
+                            "t": {
+                              "type": "string"
+                            },
+                            "r": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "File Manager"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "fileId",
+                  "name"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "fileId": {
+                    "type": "integer",
+                    "description": "Unique identifier of file object[auto-increament key]."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "New name of the file."
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "fileId",
+                  "name"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "fileId": {
+                    "type": "integer",
+                    "description": "Unique identifier of file object[auto-increament key]."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "New name of the file."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/plugin/moveFiles": {
+      "post": {
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "errorMessage": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "File Manager"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "fileIds",
+                  "destinationFolderId"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "fileIds": {
+                    "type": "array",
+                    "description": "Array of unique identifier of file object[auto-increament key].",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "destinationFolderId": {
+                    "type": "number",
+                    "description": "Unique identifier of destination folder object id.[auto-increament key]."
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "fileIds",
+                  "destinationFolderId"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "fileIds": {
+                    "type": "array",
+                    "description": "Array of unique identifier of file object[auto-increament key].",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "destinationFolderId": {
+                    "type": "number",
+                    "description": "Unique identifier of destination folder object id.[auto-increament key]."
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/plugin/deleteFiles": {
+      "post": {
+        "responses": {
+          "2xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure."
+                    },
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "errorMessage": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "5xx": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "True will be for success operation and false will be for failure.",
+                      "default": false
+                    },
+                    "errorCode": {
+                      "type": "number"
+                    },
+                    "errorMessage": {
+                      "type": "string",
+                      "default": "Something went wrong. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "File Manager"
+        ],
+        "security": [
+          {
+            "httpAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "fileIds"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "fileIds": {
+                    "type": "array",
+                    "description": "Array of unique identifier of file object[auto-increament key].",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "rootName",
+                  "fileIds"
+                ],
+                "properties": {
+                  "rootName": {
+                    "type": "string",
+                    "description": "Name of the root folder(Slug of the organization)."
+                  },
+                  "fileIds": {
+                    "type": "array",
+                    "description": "Array of unique identifier of file object[auto-increament key].",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    }
+  }
+}
