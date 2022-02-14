@@ -44,14 +44,20 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     ],
   ],
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      gtag: {
+  plugins: [
+    [
+      '@docusaurus/plugin-google-gtag',
+      {
         trackingID: 'GTM-P3STB99',
         // Optional fields.
         anonymizeIP: true, // Should IPs be anonymized?
       },
+    ],
+  ],
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
       algolia: {
         //Check this: https://github.com/gmetrixr/help/blob/main/README-searchfix.md
         apiKey: '54a65c550f07165aef07aba800bfe18f',
