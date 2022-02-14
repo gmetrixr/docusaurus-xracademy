@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkgmetri_xracademy=self.webpackChunkgmetri_xracademy||[]).push([[556],{5556:function(e,a,c){c.r(a)}}]);
