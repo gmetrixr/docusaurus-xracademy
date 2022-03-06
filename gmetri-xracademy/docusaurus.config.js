@@ -59,8 +59,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       algolia: {
-        //Check this: https://github.com/gmetrixr/help/blob/main/README-searchfix.md
-        apiKey: '54a65c550f07165aef07aba800bfe18f',
+        appId: 'UQD6V3Y21S',
+        apiKey: '32e6eeadb9a18bcde054dcfef720600e',
         indexName: 'gmetri',
         // externalUrlRegex prevents algolia from using relative URLs in search results
         // https://github.com/facebook/docusaurus/blob/edb4d0009674600fd8cdf7d3c319da2fc7e60bda/packages/docusaurus-theme-search-algolia/src/theme/SearchBar/index.tsx#L172
