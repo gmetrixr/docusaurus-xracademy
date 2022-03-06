@@ -1,8 +1,8 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@docsearch/react': ^3.0.0-alpha.50
   '@docusaurus/core': 2.0.0-beta.15
+  '@docusaurus/plugin-google-gtag': ^2.0.0-beta.15
   '@docusaurus/preset-classic': 2.0.0-beta.15
   '@docusaurus/theme-common': ^2.0.0-beta.15
   '@docusaurus/theme-search-algolia': ^2.0.0-beta.15
@@ -17,8 +17,8 @@ specifiers:
   url-loader: ^4.1.1
 
 dependencies:
-  '@docsearch/react': 3.0.0-alpha.50_react-dom@17.0.2+react@17.0.2
   '@docusaurus/core': 2.0.0-beta.15_react-dom@17.0.2+react@17.0.2
+  '@docusaurus/plugin-google-gtag': 2.0.0-beta.15_react-dom@17.0.2+react@17.0.2
   '@docusaurus/preset-classic': 2.0.0-beta.15_cf03b7458ee8070c9e09362c20b6f0a1
   '@docusaurus/theme-common': 2.0.0-beta.15_cf03b7458ee8070c9e09362c20b6f0a1
   '@docusaurus/theme-search-algolia': 2.0.0-beta.15_cf03b7458ee8070c9e09362c20b6f0a1

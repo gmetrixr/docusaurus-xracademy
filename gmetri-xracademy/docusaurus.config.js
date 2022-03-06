@@ -62,6 +62,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         //Check this: https://github.com/gmetrixr/help/blob/main/README-searchfix.md
         apiKey: '54a65c550f07165aef07aba800bfe18f',
         indexName: 'gmetri',
+        // externalUrlRegex prevents algolia from using relative URLs in search results
+        // https://github.com/facebook/docusaurus/blob/edb4d0009674600fd8cdf7d3c319da2fc7e60bda/packages/docusaurus-theme-search-algolia/src/theme/SearchBar/index.tsx#L172
+        externalUrlRegex: 'www\\.gmetri\\.com',
       },
       navbar: {
         title: 'GMetri XR Academy',
