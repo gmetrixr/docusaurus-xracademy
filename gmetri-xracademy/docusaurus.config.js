@@ -120,6 +120,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'Follow Us',
             items: [
               {
+                label: 'Discord',
+                href: 'https://discord.gg/vyXADJUeR8',
+              },
+              {
                 label: 'Twitter',
                 href: 'https://twitter.com/GMetriXR',
               },
